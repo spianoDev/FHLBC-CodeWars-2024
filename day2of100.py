@@ -28,21 +28,19 @@ class TestPartner:
 def love_language(partner, weeks):
     positive_response = []
     tries = weeks * 7
+    loop_count = 0
     for n in range(tries):
         for language in LOVE_LANGUAGES:
             if partner.response(language) == 'positive':
                 positive_response.append(language)
-                break
-            else:
-                pass
-
+        loop_count += 1
     def most_frequent(lst):
         return max(set(lst), key = lst.count)
-    print(most_frequent(positive_response))
+    print(most_frequent(positive_response), loop_count)
     return most_frequent(positive_response)
 
 
 test_partner = TestPartner('words')
 love_language(test_partner, 2)
 test_partner2 = TestPartner('gifts')
-love_language(test_partner2, 11)
+love_language(test_partner2, 8)
