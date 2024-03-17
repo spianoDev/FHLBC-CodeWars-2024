@@ -12,7 +12,7 @@
 # There will be 50 tests. Although it's difficult to fail, in case you get unlucky, just run the tests again.
 # After all, a few weeks may not be enough...
 import random
-# LOVE_LANGUAGES = ["words", "acts", "gifts", "time", "touch"]
+LOVE_LANGUAGES = ["words", "acts", "gifts", "time", "touch"]
 class TestPartner:
     def __init__(self, main_lang):
         self.main = main_lang
@@ -26,17 +26,23 @@ class TestPartner:
             else:        return 'neutral'
 
 def love_language(partner, weeks):
-    yes = 1
-    lang = ''
+    positive_response = []
     tries = weeks * 7
-    while yes < tries:
-        # print(partner.response(type))
-        if partner.response(type) == 'positive':
-            # print(partner.main)
-            yes += 1
-            lang = partner.main
-    print(lang, yes)
-    return lang
+    for n in range(tries):
+        for language in LOVE_LANGUAGES:
+            if partner.response(language) == 'positive':
+                positive_response.append(language)
+                break
+            else:
+                pass
 
-test_partner = TestPartner('gifts')
-love_language(test_partner, 100)
+    def most_frequent(lst):
+        return max(set(lst), key = lst.count)
+    print(most_frequent(positive_response))
+    return most_frequent(positive_response)
+
+
+test_partner = TestPartner('words')
+love_language(test_partner, 2)
+test_partner2 = TestPartner('gifts')
+love_language(test_partner2, 11)
