@@ -26,19 +26,27 @@ class TestPartner:
             else:        return 'neutral'
 
 def love_language(partner, weeks):
-    positive_response = []
+    positive_response = {'words': 0, 'acts': 0, 'gifts': 0, 'time': 0, 'touch': 0}
     tries = weeks * 7
     loop_count = 0
     for n in range(tries):
-        for language in LOVE_LANGUAGES:
-            if partner.response(language) == 'positive':
-                positive_response.append(language)
+        # Apparently having a loop inside will not pass so this is a much less efficient (and programmatically
+        # annoying) solution
+        if partner.response('words') == 'positive':
+            positive_response['words'] += 1
+        elif partner.response('acts') == 'positive':
+            positive_response['acts'] += 1
+        elif partner.response('gifts') == 'positive':
+            positive_response['gifts'] += 1
+        elif partner.response('time') == 'positive':
+            positive_response['time'] += 1
+        elif partner.response('touch') == 'positive':
+            positive_response['touch'] += 1
         loop_count += 1
-    def most_frequent(lst):
-        return max(set(lst), key = lst.count)
-    print(most_frequent(positive_response), loop_count)
-    return most_frequent(positive_response)
-
+    print(positive_response, loop_count)
+    likely_love_language = max(zip(positive_response.values(), positive_response.keys()))[1]
+    print(likely_love_language)
+    return likely_love_language
 
 test_partner = TestPartner('words')
 love_language(test_partner, 2)
