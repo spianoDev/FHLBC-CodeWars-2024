@@ -20,12 +20,12 @@
 def is_solved(board):
     count = 0
     for pair in board:
-        if pair[0] == count and pair[1] == (count + 1):
-            count += 2
-        else:
-            print('false')
-            return False
-    print('true')
+        for num in pair:
+            if num == count:
+                count += 1
+            else:
+                return False
     return True
-is_solved([[0,1],[2,3]]) # => True
+
+# is_solved([[0,1],[2,3]]) # => True
 is_solved([[1,0],[3,2]]) # => False
