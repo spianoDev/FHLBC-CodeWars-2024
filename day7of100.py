@@ -11,18 +11,16 @@
 # experience	0
 
 class Hero(object):
-    def __init__(self):
-        # self.name = input('Enter your hero\'s name: ')
-        self.name = 'Hero'
+    def __init__(self, name='Hero'):
+        self.name = name
         self.position = '00'
         self.health = 100
         self.damage = 5
         self.experience = 0
         print(self.name, self.position, self.health, self.damage, self.experience)
 
-# myHero = input('What is your hero\'s name?')
 my_name = 'spiano'
 myHero = Hero()
 
-
+another_hero = Hero(my_name)
 
