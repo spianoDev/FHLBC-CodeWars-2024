@@ -25,13 +25,13 @@ from day7of100 import Hero
 #         return '0' + answer
 #     else:
 #         return answer
+def add_leading_zero(answer):
+    if len(answer) == 1:
+        return '0' + answer
+    else:
+        return answer
 
 def move(self, direction):
-    def add_leading_zero(answer):
-        if len(answer) == 1:
-            return '0' + answer
-        else:
-            return answer
     if direction == 'up' and int(self.position) < 10:
         raise ValueError(f'Direction {direction} is out of bounds. Player remains on position {self.position}')
     elif direction == 'up' and int(self.position) >= 10:
@@ -62,8 +62,17 @@ Hero.move = move
 myHero = Hero()
 # print(myHero)
 myHero.position = '11'
-myHero.move('up')
+# myHero.move('up')
 # myHero.move('down')
 # myHero.move('right')
 # myHero.move('up')
 # myHero.move('left')
+# test.assert_equals(myHero.position, '00')
+# myHero.move('down')
+# test.assert_equals(myHero.position, '10')
+# myHero.move('right')
+# test.assert_equals(myHero.position, '11')
+myHero.move('up')
+# test.assert_equals(myHero.position, '01')
+myHero.move('right')
+# test.assert_equals(myHero.position, '02')
