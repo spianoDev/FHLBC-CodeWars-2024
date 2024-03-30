@@ -1,6 +1,8 @@
 # Putting the Terminal Game Together as 2-person game: Computer Hero vs. spiano #
 
 from day8of100 import * ## This is the move function ##
+from day10of100 import * ## This is the turn sequence ##
+
 # Day 7 Hero Class
 class Hero(object):
     def __init__(self, name='Hero'):
@@ -24,3 +26,4 @@ player1.position = '11'
 computer_player.position = '44'
 player1.move('up')
 computer_player.move('left')
+do_turn(player1)
