@@ -16,24 +16,19 @@
 # - `move`
 from random import randint
 from time import sleep
-from day11of100 import *
+from day11of100 import * ## Pull in the combat function ##
+from day8of100 import * ## Pull in the move function ##
 
 ## I will return to this idea when all the other grasshopper pieces are done to stitch them together with 'real'
 # functions ##
-
+dice_roll = randint(1, 6)
+move_options = ['blank', 'right', 'left', 'up', 'down', 'left', 'right']
 def typing(s):
     for letter in s:
         print(letter, end='', flush=True)
         sleep(.05)
 
 def do_turn(player):
-    def dice_roll():
-        return randint(1, 6)
-    def move():
-        # placeholder function
-        typing(f'{player.name} moves to new position...\n')
-        sleep(2)
-        typing(f'Space is occupied... COMBAT!\n')
     def get_coins():
         return randint(10, 100)
     def buy_health():
@@ -41,12 +36,15 @@ def do_turn(player):
         typing(f'Power up to restore health...\n')
     def print_status():
         # placeholder function
-        typing(f'{player.name} is now in position x with y health...\n')
+        typing(f'{player.name} is now in position {player.position} with {player.health} health...\n')
 
     '''Run turn sequence'''
-    typing(f'New turn: {player.name} rolls {dice_roll()}\n')
-    move()
-    combat(player.health, randint(5, 10))
+    typing(f'New turn: {player.name} rolls {dice_roll}\n')
+    typing(f'{player.name} moves to new position...\n')
+    typing('. . . . . . . . \n')
+    # player.move(move_options[dice_roll])
+    player.move(move_options[dice_roll])
+    combat(player.health, player.damage)
     typing(f'Congratulations warrior, you have won ${get_coins()}!!\n')
     buy_health()
     print_status()

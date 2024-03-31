@@ -17,7 +17,7 @@ class Hero(object):
         self.health = 100
         self.damage = 5
         self.experience = 0
-        print(self.name, self.position, self.health, self.damage, self.experience)
+        # print(self.name, self.position, self.health, self.damage, self.experience)
 
 my_name = 'spiano'
 myHero = Hero()
