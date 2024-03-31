@@ -13,7 +13,7 @@ class Hero(object):
         self.experience = 0
         # print(self.name, self.position, self.health, self.damage, self.experience)
 
-my_name = 'spiano'
+my_name = input('Player 1 please enter your name: ')
 computer_player = Hero()
 
 player1 = Hero(my_name)
@@ -22,8 +22,8 @@ player1 = Hero(my_name)
 
 Hero.move = move
 # print(myHero)
-player1.position = '11'
-computer_player.position = '44'
-player1.move('up')
-computer_player.move('left')
+# player1.position = '11'
+# computer_player.position = '44'
+# player1.move('up')
+# computer_player.move('left')
 do_turn(player1)

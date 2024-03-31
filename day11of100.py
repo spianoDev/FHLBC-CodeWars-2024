@@ -12,6 +12,6 @@ def combat(health, damage):
         print(f'Your remaining health is {remaining_health}')
         return remaining_health
 
-combat(100, 5) # => 95
-combat(83, 16) # => 67
-combat(20, 30) # => 0
+# combat(100, 5) # => 95
+# combat(83, 16) # => 67
+# combat(20, 30) # => 0

@@ -16,6 +16,7 @@
 # - `move`
 from random import randint
 from time import sleep
+from day11of100 import *
 
 ## I will return to this idea when all the other grasshopper pieces are done to stitch them together with 'real'
 # functions ##
@@ -31,8 +32,7 @@ def do_turn(player):
     def move():
         # placeholder function
         typing(f'{player.name} moves to new position...\n')
-    def combat():
-        # placeholder function
+        sleep(2)
         typing(f'Space is occupied... COMBAT!\n')
     def get_coins():
         return randint(10, 100)
@@ -46,11 +46,11 @@ def do_turn(player):
     '''Run turn sequence'''
     typing(f'New turn: {player.name} rolls {dice_roll()}\n')
     move()
-    combat()
+    combat(player.health, randint(5, 10))
     typing(f'Congratulations warrior, you have won ${get_coins()}!!\n')
     buy_health()
     print_status()
 
 # do_turn()
 
-## I don't understand what this one is asking for so I wrote a nifty little program ##
+## I don't understand what this one is asking for, so I wrote a nifty little program ##
