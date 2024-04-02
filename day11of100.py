@@ -2,15 +2,17 @@
 
 # Create a combat function that takes the player's current health and the amount of damage received,
 # and returns the player's new health. Health can't be less than 0.
+from day7of100 import Hero
 
-def combat(health, damage):
+def combat(self, enemy, health, damage):
     if (health - damage) <= 0:
-        print('You died!')
-        return 0
+        self.health = health - damage
+        print(f'{enemy.name} has struck a fatal blow! Your health is now {self.health} and you died...')
+        return health
     else:
-        remaining_health = health - damage
-        print(f'Your remaining health is {remaining_health}')
-        return remaining_health
+        self.health = health - damage
+        print(f'Your remaining health is {self.health}')
+        return health
 
 # combat(100, 5) # => 95
 # combat(83, 16) # => 67

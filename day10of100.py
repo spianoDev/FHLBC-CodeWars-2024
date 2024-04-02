@@ -18,6 +18,7 @@ from random import randint
 from time import sleep
 from day11of100 import * ## Pull in the combat function ##
 from day8of100 import * ## Pull in the move function ##
+from day13of100 import * ## Pull in buy health function ##
 
 ## I will return to this idea when all the other grasshopper pieces are done to stitch them together with 'real'
 # functions ##
@@ -28,15 +29,12 @@ def typing(s):
         print(letter, end='', flush=True)
         sleep(.05)
 
-def do_turn(player):
+def do_turn(player, opponent):
     def get_coins():
         return randint(10, 100)
-    def buy_health():
-        # placeholder function
-        typing(f'Power up to restore health...\n')
-    def print_status():
-        # placeholder function
-        typing(f'{player.name} is now in position {player.position} with {player.health} health...\n')
+    def print_status(person):
+        print(person.name, person.position, person.health, person.damage, person.experience, person.money)
+        typing(f'{person.name} is now in position {person.position} with {person.health} health...\n')
 
     '''Run turn sequence'''
     typing(f'New turn: {player.name} rolls {dice_roll}\n')
@@ -44,11 +42,10 @@ def do_turn(player):
     typing('. . . . . . . . \n')
     # player.move(move_options[dice_roll])
     player.move(move_options[dice_roll])
-    combat(player.health, player.damage)
+    combat(player, opponent, player.health, opponent.damage)
     typing(f'Congratulations warrior, you have won ${get_coins()}!!\n')
-    buy_health()
-    print_status()
+    player.money = player.money + get_coins()
+    buy_health(player, player.health, player.money)
+    print_status(player)
 
-# do_turn()
 
-## I don't understand what this one is asking for, so I wrote a nifty little program ##
