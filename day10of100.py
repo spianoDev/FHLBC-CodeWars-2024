@@ -30,11 +30,16 @@ def typing(s):
         sleep(.05)
 
 def do_turn(player, opponent):
+
     def get_coins():
-        return randint(10, 100)
+        coin_win = randint(10, 100)
+        player.money += coin_win
+        typing(f'Congratulations warrior, you have won ${coin_win} and now carry {player.money}!!\n')
+
     def print_status(person):
-        print(person.name, person.position, person.health, person.damage, person.experience, person.money)
-        typing(f'{person.name} is now in position {person.position} with {person.health} health...\n')
+        # print(person.name, person.position, person.health, person.damage, person.experience, person.money)
+        typing(f'{person.name} is now in position {person.position} with {person.health} health and '
+               f'{person.money} coins...\n')
 
     '''Run turn sequence'''
     typing(f'New turn: {player.name} rolls {dice_roll}\n')
@@ -43,8 +48,7 @@ def do_turn(player, opponent):
     # player.move(move_options[dice_roll])
     player.move(move_options[dice_roll])
     combat(player, opponent, player.health, opponent.damage)
-    typing(f'Congratulations warrior, you have won ${get_coins()}!!\n')
-    player.money = player.money + get_coins()
+    get_coins()
     buy_health(player, player.health, player.money)
     print_status(player)
 
