@@ -27,4 +27,6 @@ Hero.move = move
 # computer_player.position = '44'
 # player1.move('up')
 # computer_player.move('left')
+
 do_turn(player1, player2)
+do_turn(player2, player1)

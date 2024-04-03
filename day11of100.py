@@ -5,14 +5,18 @@
 from day7of100 import Hero
 
 def combat(self, enemy, health, damage):
-    if (health - damage) <= 0:
-        self.health = health - damage
-        print(f'{enemy.name} has struck a fatal blow! Your health is now {self.health} and you died...')
-        return health
+    if self.position == enemy.position:
+        print(f'{self.name}, you see an enemy ahead! Prepare for COMBAT with {enemy.name}!!')
+        if (health - damage) <= 0:
+            self.health = health - damage
+            print(f'{enemy.name} has struck a fatal blow! Your health is now {self.health} and you died...')
+            return health
+        else:
+            self.health = health - damage
+            print(f'Your remaining health is {self.health}')
+            return health
     else:
-        self.health = health - damage
-        print(f'Your remaining health is {self.health}')
-        return health
+        print(f'This location seems safe for now...')
 
 # combat(100, 5) # => 95
 # combat(83, 16) # => 67
